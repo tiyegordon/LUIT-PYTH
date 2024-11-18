@@ -1,18 +1,29 @@
-#Creating input for number of EC2 isntanes#
-ec2_instances = int(input ('How many unique EC2 instance names do you want? '))
+import random  # Importing random library at the top of the script
 
-#Creating input for department name#
-department_name = input ('What is the name of your department?')
+# Create input for number of EC2 instances
+ec2_instance = int(input('How many unique EC2 instance names do you want? '))
 
-#creating variable to assign random numbers#
-import random
+def get_department_name(): #loop function
+    valid_department_names = ['Accounting', 'Marketing', 'FinOps'] #an array of strings for comparison with department_name variable
 
-def assign_random_number():
-    random_number = random.randint(1, 100)  # Generates a random number between 1 and 100
-    
-    return f"{department_name} {random_number}" #create a human-readable string instead of a tuple
+    # Create input for department name
+    while True:
+        department_name = input('What is the name of your department? ')
 
-# Example of generating multiple outputs with random numbers
-for _ in range(ec2_instances):  
-    print(assign_random_number())
+        # Check if the department name is valid
+        if department_name in valid_department_names:
+            # Function to assign a random number
+            def assign_random_number():
+                return random.randint(1, 100)  # Generates a random number between 1 and 100
+            
+            # Generate multiple EC2 instance names with random numbers
+            for _ in range(ec2_instance):
+                random_number = assign_random_number()  # Get a random number
+                print(f"{department_name}-{random_number}")  # Create a human-readable EC2 instance , the squiggly brackets prevent touple format
 
+            break  # Stops the loop if the department name is correct/statement is true
+
+        else: #directive if statment is falsel will continue in loop, no program exit
+            print('You are prohibited from using the Name Generator.\nIf you have received this message in error, please try again.\nRemember the system is case sensitive.')
+
+get_department_name() #close function
