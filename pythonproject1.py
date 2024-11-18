@@ -4,9 +4,9 @@ import random  # Importing random library at the top of the script
 ec2_instance = int(input('How many unique EC2 instance names do you want? '))
 
 def get_department_name(): #loop function
-    valid_department_names = ['Accounting', 'Marketing', 'FinOps'] #an array of strings for comparison with department_name variable
+    valid_department_names = ['Accounting', 'Marketing', 'FinOps'] #an array of strings for comparison with department_name variable. This was more effeceint than assigning each string to a variable.
 
-    # Create input for department name
+    # Create input for department name using while/if/else statement 
     while True:
         department_name = input('What is the name of your department? ')
 
@@ -19,7 +19,7 @@ def get_department_name(): #loop function
             # Generate multiple EC2 instance names with random numbers
             for _ in range(ec2_instance):
                 random_number = assign_random_number()  # Get a random number
-                print(f"{department_name}-{random_number}")  # Create a human-readable EC2 instance , the squiggly brackets prevent touple format
+                print(f"{department_name}-{random_number}")  # f-string with brakcets for embeding Python expressions directly inside a string.
 
             break  # Stops the loop if the department name is correct/statement is true
 
